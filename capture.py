@@ -19,7 +19,7 @@ def start_depth_camera(output_dir):
 
     while True:
         frames = pipeline.wait_for_frames()
-        timestamp = frames.get_frame_metadata(rs.frame_metadata_value.time_of_arrival)
+        timestamp = frames.get_frame_metadata(rs.frame_metadata_value.frame_timestamp) # micro seconds
         aligned_frames = align.process(frames)
 
         aligned_depth_frame = aligned_frames.get_depth_frame()
